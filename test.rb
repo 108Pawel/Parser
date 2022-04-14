@@ -1,4 +1,6 @@
-require_relative 'Parser.rb'
+# frozen_string_literal: true
+
+require_relative 'parser'
 
 parser = Parser.new('lab.txt')
 
