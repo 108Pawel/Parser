@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# represents laboratory test results object
+# Handles Allergy requests
 class LaboratoryTestResult
   def initialize(code, result, format, comment); end
 end

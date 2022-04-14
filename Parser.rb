@@ -36,8 +36,16 @@ class Parser
   end
 
   def get_result(result)
-    return result if Float(result)
-    return result.float if Integer(result)
+    begin
+      return result if Float(result)
+    rescue StandardError
+      false
+    end
+    begin
+      return result.float if Integer(result)
+    rescue StandardError
+      false
+    end
     return -1.0 if NEGATIVES.include?(result)
     return -2.0 if POSITIVES.include?(result)
     return -3.0 if result == '+++'
