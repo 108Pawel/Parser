@@ -2,6 +2,6 @@
 
 require_relative 'parser'
 
-parser = Parser.new('lab.txt')
+parser = Parser.new
 
-parser.mapped_results
+parser.mapped_results('lab.txt')

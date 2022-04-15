@@ -5,7 +5,7 @@ require './parser'
 require './laboratory_test_result'
 
 describe Parser do
-  parser = Parser.new('./test.txt')
+  parser = Parser.new
 
   describe '#get_result' do
     context 'when result is an integer' do
@@ -133,6 +133,7 @@ describe Parser do
   end
 
   describe '#mapped_results' do
+    let(:file) { './test.txt' }
     let(:expected_result) do
       { code: 'A100', result: -2.0, format: 'boolean', comment: "Comment 1 for + result\n" }
     end
@@ -144,9 +145,9 @@ describe Parser do
     it 'returns array of LaboratoryTestResult' do
       expect(parser).to receive(:map_single_result).twice
 
-      expect(parser.send(:mapped_results)).to be_an_instance_of(Array)
+      expect(parser.send(:mapped_results, file)).to be_an_instance_of(Array)
 
-      expect(parser.send(:mapped_results)).to all(be_an_instance_of(LaboratoryTestResult))
+      expect(parser.send(:mapped_results, file)).to all(be_an_instance_of(LaboratoryTestResult))
     end
   end
 end
